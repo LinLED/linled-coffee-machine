@@ -256,6 +256,4 @@ class Carrousel(QWidget, Debug):
             new_value = (current_value + num_cards)% 8  * card_width
 
             # Set the new scroll position
-            print("Current value: ", current_value)
-            print("New value: ", new_value)
             scroll_bar.setValue(new_value)
