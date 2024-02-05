@@ -1,0 +1,14 @@
+# Style
+BASIC_FONT = "Arial"
+
+
+# Behavior
+CURSOR_HIDDEN = True
+QUICK_MOVE_TRESHOLD = 50  # ms
+SUGAR_BAR_RESOLUTION = 8
+IDLE_TIMER = 8000  # ms
+PAYMENT_TIMER = 5000  # ms
+
+# Animation
+TOP_BAR_SPEED = 1500  # ms
+ANIMATION_SPEED = 200  # ms
