@@ -84,7 +84,7 @@ class CarrouselCard(QWidget, Debug):
         if self.backgroundPixmap.isNull():
             print(f"Failed to load image: {imagePath}")
             return
-        self.update()  # Trigger a repaint
+        self.update()
 
     def paintEvent(self, event):
         painter = QPainter(self)
@@ -97,16 +97,13 @@ class CarrouselCard(QWidget, Debug):
         )
 
         if not self.backgroundPixmap.isNull():
-            # Draw the pixmap within the adjusted rectangle
             painter.drawPixmap(adjustedRect, self.backgroundPixmap)
 
             if self.selected:
                 # Draw a border around the pixmap
-                border_width = 5  # Adjust the border width as needed
-                borderColor = QColor("#dbc1ac")
-                pen = QPen(
-                    borderColor, border_width
-                )  # Adjust the color and width as needed
+                border_width = 5
+                border_color = QColor("#dbc1ac")
+                pen = QPen(border_color, border_width)
                 painter.setPen(pen)
                 painter.drawRect(
                     adjustedRect.adjusted(
@@ -167,7 +164,6 @@ class CarrouselCard(QWidget, Debug):
             "background-color: rgba(219,193,172, 128); border: 2px solid red;"
         )
         self.margins = DEFAULT_MARGIN
-        # self.card_visual.setStyleSheet("border: 2px solid red;")
         self.label.setStyleSheet("border: 2px solid black;")
 
         if self.main_window != None:
@@ -175,7 +171,6 @@ class CarrouselCard(QWidget, Debug):
                 self.setStyleSheet(
                     "background-color: rgba(219,193,172, 128); border: 2px solid red;"
                 )
-                # self.card_visual.setStyleSheet("border: 2px solid red;")
                 self.label.setStyleSheet("border: 2px solid red;")
 
     def set_selected_style(self):
