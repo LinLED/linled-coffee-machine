@@ -44,7 +44,7 @@ class MainWindow(QMainWindow):
         self.init_scenes()
         self.init_timers()
         self.init_sounds()
-        self.initUI()
+        self.init_ui()
         self.init_selections()
         self.show()
         self.setMouseTracking(True)  # Enable mouse tracking
@@ -66,7 +66,7 @@ class MainWindow(QMainWindow):
         self.idle_scene = IdleScene()
         self.main_scene = QWidget()
 
-        self.sub_stack = QStackedWidget()  # Initialize self.stack here
+        self.sub_stack = QStackedWidget()
         self.coffee_selection_scene = CoffeeSelectionScene()
         self.sugar_selection_scene = SugarSelectionScene()
         self.recap_selection_scene = RecapScene()
@@ -94,9 +94,11 @@ class MainWindow(QMainWindow):
         # Logo on left top
         top_bar_height = QApplication.primaryScreen().geometry().height() * 0.15
         self.image_label = QLabel()
-        pixmap = QPixmap(resource_path("assets/linled_logo.png"))
-        scaled_pixmap = pixmap.scaledToHeight(top_bar_height, Qt.SmoothTransformation)
-        self.image_label.setPixmap(scaled_pixmap)
+        self.pixmap = QPixmap(resource_path("assets/linled_logo.png"))
+        self.scaled_pixmap = self.pixmap.scaledToHeight(
+            top_bar_height, Qt.SmoothTransformation
+        )
+        self.image_label.setPixmap(self.scaled_pixmap)
         self.top_bar_layout.addWidget(self.image_label, 1)
         self.top_bar_layout.addSpacing(10)
 
@@ -111,6 +113,7 @@ class MainWindow(QMainWindow):
 
         self.main_stack = QStackedWidget()
         self.main_stack.setContentsMargins(0, 0, 0, 0)
+
         self.main_stack.addWidget(self.options_scene)
         self.main_stack.addWidget(self.idle_scene)
         self.main_stack.addWidget(self.main_scene)
@@ -126,7 +129,7 @@ class MainWindow(QMainWindow):
             QUrl.fromLocalFile(resource_path("assets/sounds/card_change.wav"))
         )
 
-    def initUI(self):
+    def init_ui(self):
         # Set the size of the window
         screen = QApplication.primaryScreen()
         rect = screen.geometry()
@@ -149,7 +152,6 @@ class MainWindow(QMainWindow):
         self.sub_stack.setCurrentIndex(Scenes.COFFEE.value)
         self.sub_stack.setMouseTracking(True)
         self.main_stack.setCurrentIndex(2)
-        # self.main_stack.setContentsMargins(100, 100, 100, 100)
 
         self.setContentsMargins(0, 0, 0, 0)
         self.sub_stack.setContentsMargins(0, 0, 0, 0)
@@ -163,7 +165,7 @@ class MainWindow(QMainWindow):
     def init_selections(self):
         self.selections = []
         self.selections.append(Selection(CoffeeType.NONE, 0))
-        
+
     def onIdle(self):
         self.on_idle = True
         self.main_stack.setCurrentIndex(1)
