@@ -1,11 +1,7 @@
-import sys
-from enum import Enum
-
 from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
 from PySide6.QtMultimedia import QSoundEffect
-
 
 from config import IDLE_TIMER
 
@@ -21,7 +17,7 @@ from components.scenes import Scenes
 from components.selection import CoffeeType, Selection
 from components.top_bar import TopBar
 from components.assets import wood_bg, resource_path
-from components.parameters import GlobalParameters, Parameter
+from components.parameters import GlobalParameters
 
 
 class MouseGlobalEventFilter(QObject):
@@ -128,6 +124,10 @@ class MainWindow(QMainWindow):
         self.change_sound.setSource(
             QUrl.fromLocalFile(resource_path("assets/sounds/card_change.wav"))
         )
+
+        self.swipe_sound = QSoundEffect()
+        self.swipe_sound.setSource(QUrl.fromLocalFile(resource_path("assets/sounds/swipe.wav")))
+        
 
     def init_ui(self):
         # Set the size of the window
