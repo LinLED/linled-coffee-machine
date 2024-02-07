@@ -151,12 +151,10 @@ class Carrousel(QWidget, Debug):
 
         if mouse_x < left_threshold:
             # Closer to the left edge => Faster scroll
-            return linear_map(mouse_x, 0, left_threshold, max_speed, min_speed)
+            return linear_map(mouse_x, 0, left_threshold, max_speed+10, min_speed)
         elif mouse_x > right_threshold:
             # Closer to the right edge => Faster scroll
-            return linear_map(
-                mouse_x, right_threshold, self.width(), min_speed, max_speed
-            )
+            return linear_map(mouse_x, right_threshold, self.width(), min_speed, max_speed)
         else:
             # Default speed
             return min_speed
@@ -199,9 +197,7 @@ class Carrousel(QWidget, Debug):
 
     def auto_scroll(self):
         scroll_bar = self.scrollArea.horizontalScrollBar()
-        scroll_bar.setValue(
-            scroll_bar.value() + self.scroll_direction * 5
-        )  # Adjust step size as needed
+        scroll_bar.setValue(scroll_bar.value() + self.scroll_direction * 5)
 
     def check_scroll(self):
         max_value = self.scrollArea.horizontalScrollBar().maximum()
