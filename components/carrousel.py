@@ -237,7 +237,7 @@ class Carrousel(QWidget, Debug):
 
     def move_cards_right(self):
         # Move the scroll area view 4 cards to the right
-        self.main_window.swipe.sound.play()
+        self.main_window.swipe_sound.play()
         self.main_window.idle_timer.start(15000)
         self.adjust_scroll(4)
 
