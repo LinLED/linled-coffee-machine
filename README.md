@@ -17,11 +17,11 @@ pip install -r requirements.txt
 ### Build
 
 ```bash
-pyinstaller --onefile myapp.py
+pyinstaller --onefile linled_coffee.py.py
 ```
 
 ### Try on local
 
 ```bash
-python myapp.py
+python linled_coffee.py.py
 ```
