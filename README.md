@@ -1,4 +1,6 @@
-# LinLED Coffee Machine UI
+# LinLED Coffee Machine
+
+The LinLED Coffee Machine Demonstrator, based on PyQt bindings PySide6, demonstrates LinLED's IR hand movement detection technology integrated within a coffee machine for intuitive user interactions.
 
 ### Prerequesites
 
