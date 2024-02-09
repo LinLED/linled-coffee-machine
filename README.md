@@ -27,3 +27,7 @@ pyinstaller --onefile linled_coffee.py.py
 ```bash
 python linled_coffee.py.py
 ```
+
+### Controls
+
+- press 'o' for options menu, press again to quit options menu
